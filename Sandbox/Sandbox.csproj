@@ -8,8 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HackerearthApiLib\HackerearthApiLib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
 
 </Project>
