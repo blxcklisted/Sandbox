@@ -11,9 +11,7 @@ public class InputModel
     public string CallBack { get; set; }
 
     public InputModel()
-    {
-        
-    }
+    { }
     public InputModel(string language, string source, string input = "", 
                         int memoryLimit = 243232, int timeLimit = 5, 
                         string id = "client001", string callBack = "https://client.com/callback/")

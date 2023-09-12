@@ -36,6 +36,6 @@ public partial class App : Application
     private InputViewModel CreateInputViewModel() =>
                             new InputViewModel(inputModel, new NavigationService(navigationStore, CreateResultViewModel));
 
-    private ResultViewModel CreateResultViewModel() => new ResultViewModel(inputModel);
+    private ResultViewModel CreateResultViewModel() => new ResultViewModel(inputModel, new NavigationService(navigationStore, CreateInputViewModel));
     
 }

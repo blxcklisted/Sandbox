@@ -9,8 +9,9 @@ public class InputViewModel : ViewModelBase
 {
     private string text;
     private readonly InputModel inputModel;
+    private readonly NavigationService resultViewNavigationService;
 
-    public ICommand ResultCommand { get; }
+    public ICommand ResultCommand { get; set; }
     public string Text
     { 
         get => text;
@@ -24,14 +25,11 @@ public class InputViewModel : ViewModelBase
     public InputViewModel(InputModel inputModel, NavigationService resultViewNavigationService)
     {
         this.inputModel = inputModel;
-        this.inputModel.Language = "PYTHON3_8";
-        this.inputModel.Input = "";
-        this.inputModel.TimeLimit = 5;
-        this.inputModel.MemoryLimit = 246323;
-        this.inputModel.Id = "client001";
-        this.inputModel.CallBack = "https://client.com/callback/";
-        
 
-        ResultCommand = new ResultCommand(this.inputModel, resultViewNavigationService);
+        ResultCommand = new ResultCommand(inputModel, resultViewNavigationService);
+        this.resultViewNavigationService = resultViewNavigationService;
+
+        if (!string.IsNullOrEmpty(inputModel.Source))
+            Text = inputModel.Source;
     }
 }

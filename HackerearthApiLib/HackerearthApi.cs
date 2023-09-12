@@ -1,6 +1,7 @@
 ﻿using HackerearthApiLib.Models;
 using Newtonsoft.Json;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace HackerearthApiLib;
@@ -15,16 +16,16 @@ public static class HackerearthApi
         using var client = new HttpClient();
         string requestBody = GetRequestBody(inputModel);
 
-        using var cont = new StringContent(requestBody);
+        using var content = new StringContent(requestBody);
 
-        cont.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+        content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
         client.DefaultRequestHeaders.Add("client-secret", CLIENT_SECRET);
 
-        using var response = await client.PostAsync(CODE_EVALUATION_URL, cont);
+        using var response = await client.PostAsync(CODE_EVALUATION_URL, content);
 
         if (response.IsSuccessStatusCode)
             return JsonConvert.DeserializeObject<JsonResponse>(await response.Content.ReadAsStringAsync())!;
-
+                
         return new JsonResponse();
     }
 
@@ -54,14 +55,14 @@ public static class HackerearthApi
     }
 
     private static string GetRequestBody(InputModel inputModel) => $@"
-    {{
-        ""lang"": ""{inputModel.Language}"",
-        ""source"": ""{inputModel.Source}"",
-        ""input"": ""{inputModel.Input}"",
-        ""memory_limit"": {inputModel.MemoryLimit},
-        ""time_limit"": {inputModel.TimeLimit},
-        ""id"": ""{inputModel.Id}"",
-        ""callback"": ""{inputModel.CallBack}""
-    }}";
+                {{
+                    ""lang"": ""{inputModel.Language}"",
+                    ""source"": ""{inputModel.Source}"",
+                    ""input"": ""{inputModel.Input}"",
+                    ""memory_limit"": {inputModel.MemoryLimit},
+                    ""time_limit"": {inputModel.TimeLimit},
+                    ""id"": ""{inputModel.Id}"",
+                    ""callback"": ""{inputModel.CallBack}""
+                }}";
 
 }

@@ -30,6 +30,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="60"/>
                             <RowDefinition Height="*"/>
+                            <RowDefinition Height="200"/>
                             <RowDefinition Height="80"/>
                         </Grid.RowDefinitions>
 
@@ -47,27 +48,88 @@
                         <StackPanel Grid.Row="1">
                             <Button Content="Python"
                                     Style="{DynamicResource ProButtonStyle}"
-                                    Command="{Binding}"/>
+                                    Command="{Binding ChangeToPython}"/>
                             <Button Content="C"
                                     Style="{DynamicResource ProButtonStyle}"
-                                    Command="{Binding}"/>
+                                    Command="{Binding ChangeToC}"/>
                             <Button Content="C++"
                                     Style="{DynamicResource ProButtonStyle}"
-                                    Command="{Binding}"/>
+                                    Command="{Binding ChangeToCpp}"/>
                             <Button Content="C#"
                                     Style="{DynamicResource ProButtonStyle}"
-                                    Command="{Binding}"/>
+                                    Command="{Binding ChangeToCsharp}"
+                                    />
                             <Button Content="Java"
                                     Style="{DynamicResource ProButtonStyle}"
-                                    Command="{Binding}"/>
+                                    Command="{Binding ChangeToJava}"/>
                             <Button Content="Swift"
                                     Style="{DynamicResource ProButtonStyle}"
-                                    Command="{Binding}"/>
+                                    Command="{Binding ChangeToSwift}"/>
                             <Button Content="PHP"
                                     Style="{DynamicResource ProButtonStyle}"
-                                    Command="{Binding}"/>
+                                    Command="{Binding ChangeToPhp}"/>
                         </StackPanel>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                            </Grid.RowDefinitions>
 
+                            <TextBlock 
+                                    Grid.Row="0"
+                                    Text="Memory:"
+                                    FontSize="14"
+                                    Margin="5"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+
+                                    />
+                            <TextBlock 
+                                    Grid.Row="1"
+                                    Text="Time:"
+                                    FontSize="14"
+                                    Margin="5"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+
+                                    />
+                            <TextBlock 
+                                    Grid.Row="2"
+                                    Text="Input:"
+                                    FontSize="14"
+                                    Margin="5"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    />
+
+                            <TextBox Grid.Row="0" 
+                                     Grid.Column="1"
+                                     Text="{Binding Memory, UpdateSourceTrigger=PropertyChanged}"
+                                     FontSize="14"
+                                     Margin="5"
+                                     VerticalAlignment="Center"
+                                    />
+                            <TextBox Grid.Row="1" 
+                                     Grid.Column="1"
+                                     Text="{Binding Time, UpdateSourceTrigger=PropertyChanged}"
+                                     FontSize="14"
+                                     Margin="5"
+                                     VerticalAlignment="Center"
+                                    />
+                            <TextBox Grid.Row="2" 
+                                     Grid.Column="1"
+                                     Text="{Binding Input, UpdateSourceTrigger=PropertyChanged}"
+                                     FontSize="14"
+                                     Margin="5"
+                                     VerticalAlignment="Center"
+                                    />
+
+                        </Grid>
                         <Border Grid.Row="3" 
                                 CornerRadius="18" 
                                 Width="110" 
@@ -144,7 +206,7 @@
                         <ContentControl Grid.Row="1" Content="{Binding CurrentViewModel}"/>
                     </Grid>
                 </Border>
-                
+
             </Grid>
         </Border>
     </Grid>

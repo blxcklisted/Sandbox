@@ -13,14 +13,17 @@
         </Grid.RowDefinitions>
             <TextBox Grid.Row="0"
                      Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}"
-                     Background="{DynamicResource SecundaryBackgroundColor}" 
-                     Margin="3"/>
+                     Background="{DynamicResource SecundaryWhiteColor}" 
+                     Margin="3"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"/>
         <Button Grid.Row="1"
                 Height="40"
                 Width="100"
                 Content="Compile"
                 Style="{DynamicResource ProButtonStyle}"
                 Command="{Binding ResultCommand}"
+                Background="{DynamicResource PrimaryGreenColor}"
                 Margin="5"/>
 
     </Grid>
